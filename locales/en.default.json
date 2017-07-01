@@ -13,6 +13,7 @@
       "home_link_title": "Back to the home page"
     },
     "newsletter_form": {
+      "newsletter_name": "Name",
       "newsletter_email": "email@example.com",
       "submit": "Subscribe",
       "confirmation": "Thanks for subscribing"
@@ -21,7 +22,7 @@
       "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
       "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
       "title": "Search for products on our site",
-      "placeholder": "Search our store",
+      "placeholder": "Search",
       "submit": "Search"
     }
   },
@@ -255,11 +256,12 @@
       "logged_in_as_html": "Logged in as {{ first_name }}",
       "log_out": "Log out",
       "log_in": "Log in",
-      "create_account": "Create account"
+      "create_account": "Sign up"
     },
     "footer": {
       "social_title": "Get Connected",
-      "newsletter_title": "Newsletter",
+      "newsletter_name": "Newsletter",
+      "newsletter_title": "Subscribe to our ",
       "accepted_payments": "Accepted Payments"
     }
   },

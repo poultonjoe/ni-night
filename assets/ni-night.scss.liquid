@@ -1697,6 +1697,9 @@ label.error {
 .icon-visa:before { content: "\56"; }
 .icon-x:before { content: "\e606"; }
 .icon-youtube:before { content: "\79"; }
+.icon-whatsapp:before { content: "\ea93"; }
+.icon-circle-arrow-right:before { content: "\ea42"; }
+.icon-user:before { content: "\e971"; }
 
 .payment-icons {
   @include user-select(none);
@@ -2181,7 +2184,7 @@ label.error {
 /*============================================================================
   #Site Footer
 ==============================================================================*/
-.site-footer {
+/*.site-footer {
   background-color: $colorFooterBg;
   padding: $gutter 0;
   color: $colorFooterText;
@@ -2189,7 +2192,7 @@ label.error {
   @include at-query ($min, $large) {
     padding: ($gutter * 2) 0;
   }
-}
+}*/
 
 /*============================================================================
   #Product and Collection Grids
@@ -2546,3 +2549,212 @@ label.error {
 }
 
 {% endif %} // settings.ajax_cart_method
+
+/*============================================================================
+  #Ni-night Theme
+==============================================================================*/
+
+/* Variables */
+$bannerBackgroundColor:{{ settings.color_header_bg }};
+$bannerColor:{{ settings.color_body_bg }};
+
+$newsletterPrimaryBackgroundColor: {{ settings.primary_color_newsletter_bg }};
+$newsletterSecondaryBackgroundColor: {{ settings.secondary_color_newsletter_bg }};
+$newsletterColor: {{ settings.color_newsletter_text }};
+$newsletterHeroColor: {{ settings.color_footer_text }};
+
+$footerBackgroundColor: {{ settings.color_footer_bg }};
+$footerColor: {{ settings.color_footer_text }};
+
+/**********************
+ Header
+ **********************/
+
+.site-header{
+  padding:0;
+}
+
+  .banner{
+    background-color:$bannerBackgroundColor;
+    color:$bannerColor;
+
+    @include at-query($min, $large) {
+      line-height:37px;
+      padding:$gutter/3 0;
+    } 
+  }
+
+    .site-header-search input{
+      width:75%;
+    }
+
+    .site-header-search-button {
+      color:$bannerColor;
+      font-size:1.5em;
+      line-height:40px;
+      vertical-align:middle;
+      width:20%;
+    } 
+
+    .site-navigation-mobile{
+      max-width:300px;
+      margin:0 auto;
+    } 
+
+    .banner a,
+    .site-navigation-mobile .site-nav__link{
+      color:$bannerColor;
+      font-weight:600;
+    }
+
+      .site-navigation-mobile .site-nav__link{
+        color:$bannerColor;
+        font-size:1.25em;
+        width:100%;
+      }
+
+  .site-header-navigation{
+    padding-top:$gutter;
+    padding-bottom:$gutter;
+  }
+
+    .site-header-main-navigation{
+      font-size:1.25em;
+      margin-right:-$gutter/2;
+    }
+
+/**********************
+ Newsletter
+ **********************/
+
+.newsletter{
+  background-color:$newsletterSecondaryBackgroundColor;
+  color:$newsletterColor;
+}
+
+  .newsletter-content{
+    background-color:$newsletterPrimaryBackgroundColor;
+    padding-top:$gutter/2;
+    padding-bottom:$gutter/2;
+  }
+
+    .newsletter-title{
+      font-size:1.5em;
+      font-weight:normal;
+      margin:0 0 1em;
+      color:$colorTextBody;
+      line-height:1;
+
+      @include at-query($min, $large) {
+        margin:0;
+      }
+    }
+      .newsletter-title-hero{
+        font-size:2em;
+        font-weight:bold;
+        text-transform:uppercase;
+        display:block;
+        color:$newsletterColor;
+      }
+
+    .newsletter-form{
+      text-align:left;
+
+      @include at-query($min, $large) {
+        padding-top:23px;
+        text-align:right;
+      }
+    }
+
+      .newsletter-input[type="text"]{
+        display:block;
+        margin:0 0 $gutter/2;
+        width:80%;
+      }
+      .newsletter-input[type="email"]{
+        width:80%;
+      }
+      .newsletter-input[type="text"],
+      .newsletter-input[type="email"]{
+        @include at-query($min, $large) {
+          width:25%;
+          margin:0 $gutter/2 0 0!important;
+          display:inline-block!important;
+        }
+
+        @include at-query($min, 810px) {
+          width:30%;
+        }
+
+        @include at-query($min, 920px) {
+          width:40%;
+        }
+      }
+
+      .newsletter-submit-button{
+        color:$newsletterColor;
+        font-size:38px;
+        line-height:40px;
+        vertical-align:middle;
+      }
+
+/**********************
+ Site footer
+ **********************/
+
+.site-footer{
+  background-color:$footerBackgroundColor;
+  color:$footerColor;
+  margin-top:$gutter;
+  padding:0!important;
+}
+
+  .site-footer-content{
+    padding:$gutter;
+  }
+
+    .site-footer-content-section{
+      margin:0 0 $gutter;
+    }
+
+      .site-footer-contact .social-icons{
+        margin:1em 0 0;
+      }
+      .site-footer-contact-address{
+        font-style:normal;
+      }
+
+      .site-footer-opening-hours{
+        margin:0 auto;
+        max-width:250px;
+        text-align:left!important;
+        
+        @include at-query($min, $large) {
+          margin:0;
+        }
+      }
+          .site-footer-opening-hours-days{
+            display:inline-block;
+            float:left;
+            clear:both;
+          }
+          .site-footer-opening-hours-times{
+            float:right;
+          }
+
+  .site-footer a {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    color: $footerColor;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: darken($footerColor, 15%);
+    }
+
+    .site-footer-nav--active > & {
+      font-weight: bold;
+    }
+  }

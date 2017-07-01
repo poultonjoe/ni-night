@@ -1,0 +1,37 @@
+<div class="slideshow">
+  <div class="slideshow-slides">
+    {% for block in section.blocks %}
+
+    {% endfor %}
+    <h4>I am the slideshow</h4>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "class": "slideshow",
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide",
+            "label": "Slide image", 
+            "info": "Upload an image to be added to the slideshow"
+          },
+          {
+            "type":      "text",
+            "id":        "url",
+            "label":     "Slide link",
+            "info":      "Enter a url to link to from the slide",
+            "placeholder": "http://"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
