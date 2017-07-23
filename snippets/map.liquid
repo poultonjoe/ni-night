@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="h2">Find Us</div>
+</div>
+<div class="map-wrapper">
+  <div id="map"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var ll = new google.maps.LatLng(1.283405,103.852196);
+    var mapOptions = {
+      zoom: 15,
+      center: ll
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+      position: ll,
+      map: map
+    });
+  });
+</script>

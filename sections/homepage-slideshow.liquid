@@ -1,0 +1,49 @@
+<div class="homepage-slideshow-slides">
+  {% for block in section.blocks %}
+    <a href="{{block.settings.url}}" class="homepage-slideshow-slide">
+      <img class="homepage-slideshow-slide-image" src="{{ block.settings.slide-image | img_url: '1120x450' }}">
+    </a>
+  {% endfor %}
+</div>
+
+ <script>
+$(function() {
+  $('.homepage-slideshow-slides').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: true,
+    arrows: false
+  })
+})
+</script> 
+
+{% schema %}
+  {
+    "name": "Homepage Slider",
+    "class": "homepage-slideshow",
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide-image",
+            "label": "Slide image", 
+            "info": "Upload an image to be added to the slideshow (image size 1120px x 450px)"
+          },
+          {
+            "type":      "text",
+            "id":        "url",
+            "label":     "Slide link",
+            "info":      "Enter a url to link to from the slide",
+            "placeholder": "http://"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -82,18 +82,18 @@
       "all_of_collection": "All {{ collection }}",
       "no_matches": "Sorry, there are no products in this collection",
       "link_title": "Browse our {{ title }} collection",
-      "grid_view": "Grid view",
-      "list_view": "List view",
       "items_with_count": {
         "one": "{{ count }} item",
         "other": "{{ count }} items"
       }
     },
     "sidebar": {
-      "tags": "Tags"
+      "menu": "Toggle categories",
+      "sort": "Sort by",
+      "collections": "Shop",
+      "types": "Products"
     },
     "sorting": {
-      "title": "Sort by",
       "featured": "Featured",
       "best_selling": "Best Selling",
       "az": "Alphabetically, A-Z",
@@ -114,8 +114,9 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone Number",
+      "nature_of_enquiry": "Nature of Enquiry",
       "message": "Message",
-      "send": "Send",
+      "send": "Submit Enquiry",
       "post_success": "Thanks for contacting us. We'll get back to you as soon as possible."
     }
   },
@@ -220,22 +221,6 @@
       "cancel": "Return to Store"
     }
   },
-  "homepage": {
-    "sections": {
-      "frontpage_title": "Frontpage Collection",
-      "featured_title": "Featured Collections",
-      "news_title": "Latest News"
-    },
-    "onboarding": {
-      "modal_title": "Almost there...",
-      "no_products_html": "You have no products in your home page collection. This placeholder will appear until you <a href=\"\/admin\/collections?tutorial=Frontpage\">add a product to this collection<\/a>.",
-      "add_product": "Add a Product",
-      "product_title": "Example Product Title",
-      "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default home page.",
-      "add_collection": "Add a Collection",
-      "collection_title": "Example Collection Title"
-    }
-  },
   "layout": {
     "navigation": {
       "menu": "Menu"
@@ -267,20 +252,22 @@
   },
   "products": {
     "general": {
-      "previous_product_html": "&larr; Previous Product",
-      "next_product_html": "Next Product &rarr;",
-      "from_text_html": "From {{ price }}",
+      "from_text_html": "From <strong class=\"current-price\">{{ price }}<\/strong>",
       "sale_price": "Sale price",
-      "regular_price": "Regular price"
+      "regular_price": "Regular price",
+      "on_sale": "On Sale"
     },
     "product": {
       "sold_out": "Sold Out",
       "on_sale": "On Sale",
-      "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
+      "on_sale_from_html": "<strong>On Sale<\/strong> from <strong class=\"current-price\">{{ price }}<\/strong>",
       "unavailable": "Unavailable",
       "compare_at": "Compare at",
       "quantity": "Quantity",
       "add_to_cart": "Add to Cart"
+    },
+    "related": {
+      "title": "Similar Items"
     }
   },
   "gift_cards": {

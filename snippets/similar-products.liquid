@@ -1,0 +1,126 @@
+<aside class="similar-products" itemscope itemtype="http://schema.org/Product">
+  {% comment %}
+    Set either or both to true, if you want
+    to limit yourself to items with same vendor, and/or type.
+  {% endcomment %}
+
+  {% assign same_vendor = false %}
+  {% assign same_type = false %}
+
+  {% comment %}
+    Collections to ignore.
+    Never pick related items from those.
+  {% endcomment %}
+
+  {% assign exclusions = 'frontpage,all' | split: ',' %}
+
+  {% comment %}
+    Looking for a relevant collection.
+  {% endcomment %}
+
+  {% if product.metafields.c_f['Related Products'] %}
+    {% assign collection = collections[product.metafields.c_f['Related Products']] %}
+  {% endif %}
+
+  {% assign found_a_collection = false %}
+  {% if collection and collection.all_products_count > 1 %}
+    {% unless exclusions contains collection.handle %}
+      {% assign found_a_collection = true %}
+    {% endunless %}
+  {% endif %}
+  {% unless found_a_collection %}
+    {% for c in product.collections %}
+      {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+        {% assign found_a_collection = true %}
+        {% assign collection = c %}
+        {% break %}
+      {% endunless %}
+    {% endfor %}
+  {% endunless %}
+
+  {% comment %}
+    If we have a relevant collection.
+  {% endcomment %}
+
+  {% if found_a_collection %}
+    {% assign current_product = product %}
+    {% capture related_items %}
+      {% for product in collection.products %}
+        {% unless product.handle == current_product.handle %}
+          {% unless same_vendor and current_product.vendor != product.vendor %}
+            {% unless same_type and current_product.type != product.type %}
+              {% include 'product-grid-item' %}
+            {% endunless %}
+          {% endunless %}
+        {% endunless %}
+      {% endfor %}
+    {% endcapture %}
+
+    {% assign related_items = related_items | trim %}
+
+    {% unless related_items == blank %}
+      <header class="similar-products text-center">
+        <h2 class="similar-products-title h5">{{ 'products.related.title' | t }}</h2>
+      </header>
+
+      <div class="similar-products-slider">
+        <div class="similar-products-slider-viewport">
+          {{ related_items }}
+        </div>
+
+        <div class="similar-products-slider-buttons">
+          <button class="similar-products-slider-button similar-products-slider-button-previous icon-fallback-text">
+            <span class="icon icon-circle-arrow-left"></span>
+            <span class="fallback-text">Previous</span>
+          </button>
+
+          <button class="similar-products-slider-button similar-products-slider-button-next icon-fallback-text">
+            <span class="icon icon-circle-arrow-right"></span>
+            <span class="fallback-text">Next</span>
+          </button>
+        </div>
+      </div>
+    {% endunless %}
+      
+  {% endif %}    
+</aside>
+
+<script>
+$(function() {
+  var $items = $('.product-grid-item')
+  var $buttons = $('.similar-products-slider-buttons')
+  
+  $('.similar-products-slider-viewport').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    prevArrow: '.similar-products-slider-button-previous',
+    nextArrow: '.similar-products-slider-button-next',
+    responsive: [
+      {
+        breakpoint: 1080,
+        settings: {
+          slidesToShow: 4
+        }
+      },   
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3
+        }
+      },        
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },        
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  })
+})
+</script>

@@ -1118,6 +1118,35 @@
     {
       "icon": {
         "paths": [
+          "M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z"
+        ],
+        "tags": [
+          "user",
+          "profile",
+          "avatar",
+          "person",
+          "member"
+        ],
+        "defaultCode": 59761,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "user, profile2",
+        "name": "user",
+        "order": 38,
+        "id": 114,
+        "prevSize": 32,
+        "code": 59761
+      },
+      "setIdx": 1,
+      "setId": 1,
+      "iconIdx": 113
+    },
+    {
+      "icon": {
+        "paths": [
           "M0 512c0 282.77 229.23 512 512 512s512-229.23 512-512-229.23-512-512-512-512 229.23-512 512zM928 512c0 229.75-186.25 416-416 416s-416-186.25-416-416 186.25-416 416-416 416 186.25 416 416z",
           "M706.744 669.256l90.512-90.512-285.256-285.254-285.254 285.256 90.508 90.508 194.746-194.744z"
         ],
@@ -1164,7 +1193,7 @@
       "properties": {
         "ligatures": "circle-right, right5",
         "name": "circle-right",
-        "order": 3,
+        "order": 37,
         "id": 323,
         "prevSize": 32,
         "code": 59970
@@ -1193,7 +1222,7 @@
       "properties": {
         "ligatures": "circle-down, down3",
         "name": "circle-down",
-        "order": 5,
+        "order": 39,
         "id": 324,
         "prevSize": 32,
         "code": 59971
@@ -1222,7 +1251,7 @@
       "properties": {
         "ligatures": "circle-left, left5",
         "name": "circle-left",
-        "order": 6,
+        "order": 40,
         "id": 325,
         "prevSize": 32,
         "code": 59972

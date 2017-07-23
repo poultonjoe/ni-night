@@ -2,7 +2,6 @@
   <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
     <input type="text" class="newsletter-input" value="{% if customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_name' | t }}" name="NAME" id="name" aria-label="{{ 'general.newsletter_form.newsletter_name' | t }}" autocorrect="off" autocapitalize="off">
     <input type="email" class="newsletter-input" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-    <!--<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">-->
     <button type="submit" class="newsletter-submit-button icon-fallback-text">
       <span class="icon icon-circle-arrow-right" aria-hidden="true"></span>
       <span class="fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
@@ -17,7 +16,6 @@
       <input type="text" class="newsletter-input" value="{% if customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_name' | t }}" name="contact[name]" id="Name" aria-label="{{ 'general.newsletter_form.newsletter_name' | t }}" autocorrect="off" autocapitalize="off">
       <input type="email" class="newsletter-input" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
       <input type="hidden" name="contact[tags]" value="newsletter">
-      <!--<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">-->
       <button type="submit" class="newsletter-submit-button icon-fallback-text">
         <span class="icon icon-circle-arrow-right" aria-hidden="true"></span>
         <span class="fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
