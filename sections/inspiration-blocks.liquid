@@ -1,0 +1,46 @@
+<div class="grid-sizer"></div>
+
+{% for block in section.blocks %}
+  {% assign image = block.settings.image | img_url: '640x' %}
+
+  {% include 'image-block', url: block.settings.url, image: image %}
+{% endfor %}
+
+<script>
+$(function() {
+  $('.inspiration-blocks').masonry({
+    itemSelector: '.image-block',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+    gutter: 15,
+    horizontalOrder: true
+  })
+})
+</script>
+
+{% schema %}
+  {
+    "name": "Inspiration blocks",
+    "class": "inspiration-blocks",
+    "blocks": [
+      {
+        "name": "Inspiration Block",
+        "type": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image"
+          },
+          {
+            "type":      "text",
+            "id":        "url",
+            "label":     "Link",
+            "info":      "Enter a url to link to from the image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
