@@ -36,29 +36,7 @@
         "id": "color_secondary",
         "label": "Secondary",
         "default": "#7dc7c0",
-        "info": "Used for secondary buttons"
-      },
-      {
-        "type": "color",
-        "id": "color_borders",
-        "label": "Borders",
-        "default": "#7dc7c0"
-      },
-      {
-        "type": "header",
-        "content": "Header"
-      },
-      {
-        "type": "color",
-        "id": "color_header_bg",
-        "label": "Background",
-        "default": "#7dc7c0"
-      },
-      {
-        "type": "color",
-        "id": "color_header_text",
-        "label": "Text",
-        "default": "#636363"
+        "info": "Used for secondary buttons, borders, and callouts"
       },
       {
         "type": "header",
@@ -75,50 +53,6 @@
         "id": "color_body_text",
         "label": "Text",
         "default": "#333333"
-      },
-      {
-        "type": "header",
-        "content": "Newsletter sign up"
-      },
-      {
-        "type": "color",
-        "id": "primary_color_newsletter_bg",
-        "label": "Primary background",
-        "default": "#7dc7c0"
-      },
-      {
-        "type": "color",
-        "id": "secondary_color_newsletter_bg",
-        "label": "Secondary background",
-        "default": "#a7dfda"
-      },
-      {
-        "type": "color",
-        "id": "color_newsletter_text",
-        "label": "Text",
-        "default": "#ffffff"
-      },
-      {
-        "type": "header",
-        "content": "Footer"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_bg",
-        "label": "Background",
-        "default": "#333333"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_text",
-        "label": "Text",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_social_link",
-        "label": "Social media icons",
-        "default": "#7dc7c0"
       }
     ]
   },
@@ -136,18 +70,11 @@
       },
       {
         "type": "image",
-        "id": "logo.png",
+        "id": "logo",
         "label": "Custom logo",
         "max-width": 225,
         "max-height": 200,
-        "info": "225 x 200px .png"
-      },
-      {
-        "type": "text",
-        "id": "logo_max_width",
-        "label": "Max logo width",
-        "default": "225",
-        "info": "Defined in pixels. Do not add the 'px' unit."
+        "info": "225 x 200px .png required"
       },
       {
         "type": "header",
@@ -160,7 +87,7 @@
       },
       {
         "type": "image",
-        "id": "favicon_small.png",
+        "id": "favicon",
         "label": "Icon",
         "max-width": 32,
         "max-height": 32,
@@ -186,6 +113,143 @@
         "id": "newsletter_form_action",
         "label": "MailChimp form action URL",
         "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      }
+    ]
+  },
+  {
+    "name": "Home page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Top Left Block"
+      },
+      {
+        "type": "text",
+        "id": "block_tl_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_tl_image",
+        "label": "Image", 
+        "info": "Upload an image (landscape)"
+      },
+      {
+        "type": "text",
+        "id": "block_tl_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
+      },
+      {
+        "type": "header",
+        "content": "Middle Left Block"
+      },
+      {
+        "type": "text",
+        "id": "block_ml_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_ml_image",
+        "label": "Image", 
+        "info": "Upload an image (portrait)"
+      },
+      {
+        "type": "text",
+        "id": "block_ml_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Left Block"
+      },
+      {
+        "type": "text",
+        "id": "block_bl_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_bl_image",
+        "label": "Image", 
+        "info": "Upload an image (square)"
+      },
+      {
+        "type": "text",
+        "id": "block_bl_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
+      },
+      {
+        "type": "header",
+        "content": "Top Right Block"
+      },
+      {
+        "type": "text",
+        "id": "block_tr_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_tr_image",
+        "label": "Image", 
+        "info": "Upload an image (portrait)"
+      },
+      {
+        "type": "text",
+        "id": "block_tr_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Right Block"
+      },
+      {
+        "type": "text",
+        "id": "block_br_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_br_image",
+        "label": "Image", 
+        "info": "Upload an image (portrait)"
+      },
+      {
+        "type": "text",
+        "id": "block_br_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Block"
+      },
+      {
+        "type": "text",
+        "id": "block_b_text",
+        "label": "Label",
+        "info": "Enter a text label"
+      },
+      {
+        "type": "image_picker",
+        "id": "block_b_image",
+        "label": "Image", 
+        "info": "Upload an image (full width landscape)"
+      },
+      {
+        "type": "text",
+        "id": "block_b_url",
+        "label": "Link",
+        "info": "Enter a url to link to from the slide"
       }
     ]
   },

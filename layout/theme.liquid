@@ -157,14 +157,7 @@
         <div class="wrapper banner-content">
           <div class="grid medium-down--hide">
             <div class="site-header-search grid__item one-third">
-              <form action="/search" method="get" class="banner-search-bar" role="search">
-                {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
-                <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
-                <button type="submit" class="site-header-search-button icon-fallback-text">
-                  <span class="icon icon-search" aria-hidden="true"></span>
-                  <span class="fallback-text">{{ 'general.search.submit' | t }}</span>
-                </button>
-              </form>
+              {% include 'search-bar' %}
             </div>
             <div class="grid__item large--two-thirds">
               <div class="grid">
@@ -298,7 +291,7 @@
     <!-- begin site-footer -->
     <footer class="site-footer" role="contentinfo">
       {% if settings.footer_newsletter_enable %}
-        <div class="newsletter text-center large--text-left">
+        <div class="newsletter text-center large--text-left" style="display:none">
           <div class="newsletter-content wrapper grid">
             <h3 class="newsletter-title grid__item large--one-half large--one-third">{{ 'layout.footer.newsletter_title' | t }}<span class="newsletter-title-hero">{{ 'layout.footer.newsletter_name' | t }}</span></h3>
             <div class="newsletter-form grid__item large--one-half large--two-thirds">

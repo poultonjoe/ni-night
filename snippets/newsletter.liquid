@@ -23,3 +23,18 @@
     {% endif %}
   {% endform %}
 {% endif %}
+
+<script>
+$(function() {
+  var KEY = 'has_signed_up_to_newsletter'
+  var $form = $('.newsletter')
+  
+  {% if form.posted_successfully? %}
+    localStorage.setItem(KEY, true)
+  {% endif %}
+
+  if (!localStorage.getItem(KEY)) {
+    $form.show()
+  }
+})
+</script>

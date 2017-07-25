@@ -13,6 +13,8 @@
 {% endcomment %}
 {% assign grid_results = false %}
 
+{% assign products_per_page = 12 %}
+
 {% comment %}
   Check to enforce respond.js
 {% endcomment %}
@@ -23,19 +25,19 @@
   Avoid accessing search.results before the opening paginate tag.
   If you do, the pagination of results will be broken.
 {% endcomment %}
-{% paginate search.results by 10 %}
+{% paginate search.results by products_per_page %}
 
   <div class="grid">
-    <div class="grid__item large--two-thirds push--large--one-sixth">
+    <div class="grid__item">
 
       {% if search.performed %}
         {% if search.results_count == 0 %}
-          <h1 class="text-center">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+          <h1 class="medium-down--text-center">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
         {% else %}
-          <h1 class="text-center">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+          <h1 class="medium-down--text-center">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
         {% endif %}
       {% else %}
-        <h1 class="text-center">{{ 'general.search.title' | t }}</h1>
+        <h1 class="medium-down--text-center">{{ 'general.search.title' | t }}</h1>
       {% endif %}
 
       {% include 'search-bar' %}
@@ -46,135 +48,27 @@
 
         <div class="grid-uniform">
           {% for item in search.results %}
-            {% comment %}
-              Check if the product is on sale and set a variable to be used below.
-            {% endcomment %}
-            {% assign on_sale = false %}
-            {% if item.compare_at_price > item.price %}
-              {% assign on_sale = true %}
-            {% endif %}
-
-            {% comment %}
-              Check if the product is sold out and set a variable to be used below.
-            {% endcomment %}
-            {% assign sold_out = true %}
-            {% if item.available %}
-              {% assign sold_out = false %}
-            {% endif %}
-
-            {% if grid_results == false %}
-              <!-- begin list search results-->
-              <div class="grid__item">
-                <div class="grid">
-                  {% if item.featured_image %}
-                    {% comment %}
-                      We have a featured_image, so it's likely a product
-                    {% endcomment %}
-                    <div class="grid__item one-third">
-                      <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                        {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-                      </a>
-                    </div>
-                  {% endif %}
-
-                  {% comment %}
-                    If we don't have a featured_image, add a push-- class to keep the alignment the same
-                  {% endcomment %}
-                  <div class="grid__item two-thirds {% unless item.featured_image %}push--one-third{% endunless %}">
-                    <h2 class="h3">{{ item.title | link_to: item.url }}</h2>
-
-                    {% if item.price %}
-                      <p>
-                        {% comment %}
-                          You can show a leading 'from' or 'up to' by checking 'product.price_varies'
-                          if your variants have different prices.
-                        {% endcomment %}
-                        {% if on_sale %}
-                          {% if item.price_varies %}
-                            {% assign sale_price = item.price | money %}
-                            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                          {% else %}
-                            <strong>{{ 'products.product.on_sale' | t }}</strong>
-                            <span itemprop="price">{{ item.price | money }}</span>
-                          {% endif %}
-                        {% else %}
-                          {% if item.price_varies %}
-                            {% assign price = item.price | money %}
-                            <span itemprop="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
-                          {% else %}
-                            <span itemprop="price">{{ item.price | money }}</span>
-                          {% endif %}
-                        {% endif %}
-                        {% if sold_out %}
-                          <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-                        {% endif %}
-                        {% if on_sale %}
-                          <br><span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span><s>{{ item.compare_at_price | money }}</s>
-                        {% endif %}
-                      </p>
-                    {% endif %}
-
-                    {% comment %}
-                      Get a brief excerpt of raw text from the page/product
-                    {% endcomment %}
-                    <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-                  </div>
-                </div>
-                {% unless forloop.last %}<hr>{% endunless %}
-              </div>
-              <!-- //list search results-->
-            {% else %}
-              <!-- begin grid search results-->
-              <div class="grid__item search-result large--one-third medium--one-third">
-                {% if item.featured_image %}
-                  <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-                    {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-                  </a>
-                {% endif %}
-
-                <h5>{{ item.title | link_to: item.url }}</h5>
-
-                {% if item.price %}
-                  <p>
-                    {% if on_sale %}
-                      {% if item.price_varies %}
-                        {% assign sale_price = item.price | money %}
-                        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                      {% else %}
-                        <strong>{{ 'products.product.on_sale' | t }}</strong>
-                        <span itemprop="price">{{ item.price | money }}</span>
-                      {% endif %}
-                    {% else %}
-                      {% if item.price_varies %}
-                        {% assign price = item.price | money %}
-                        <span itemprop="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
-                      {% else %}
-                        <span itemprop="price">{{ item.price | money }}</span>
-                      {% endif %}
-                    {% endif %}
-                    {% if sold_out %}
-                      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-                    {% endif %}
-                    {% if on_sale %}
-                      <br><s>{{ item.compare_at_price | money }}</s>
-                    {% endif %}
-                  </p>
-                {% else %}
-                  <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-                {% endif %}
-              </div>
-              <!-- //grid search results-->
-            {% endif %}
-
+            {% include 'product-grid-item', product: item, grid_item_width: 'large--one-quarter medium--one-half' %}
           {% endfor %}
         </div>
 
-        {% if paginate.pages > 1 %}
-          <hr>
-          <div class="pagination">
+        <div class="pagination">
+          {% assign product_offset = paginate.current_offset | plus: 1 %}
+          {% assign page_product_count = paginate.current_offset | plus: products_per_page %}
+          <span class="product-count">
+            Showing items {{ product_offset }}
+            -
+            {% if page_product_count <= paginate.items %}
+              {{page_product_count}}
+            {% else %}
+              {{paginate.items}}
+            {% endif %}
+            of {{paginate.items}}.
+          </span>
+          {% if paginate.pages > 1 %}
             {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
 
       {% endif %}
 
