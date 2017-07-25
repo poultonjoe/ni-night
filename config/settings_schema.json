@@ -130,6 +130,13 @@
         "info": "Enter a text label"
       },
       {
+        "type": "color",
+        "id": "color_block_tl_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
+      },
+      {
         "type": "image_picker",
         "id": "block_tl_image",
         "label": "Image", 
@@ -150,6 +157,13 @@
         "id": "block_ml_text",
         "label": "Label",
         "info": "Enter a text label"
+      },
+      {
+        "type": "color",
+        "id": "color_block_ml_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
       },
       {
         "type": "image_picker",
@@ -174,6 +188,13 @@
         "info": "Enter a text label"
       },
       {
+        "type": "color",
+        "id": "color_block_bl_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
+      },
+      {
         "type": "image_picker",
         "id": "block_bl_image",
         "label": "Image", 
@@ -194,6 +215,13 @@
         "id": "block_tr_text",
         "label": "Label",
         "info": "Enter a text label"
+      },
+      {
+        "type": "color",
+        "id": "color_block_tr_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
       },
       {
         "type": "image_picker",
@@ -218,6 +246,13 @@
         "info": "Enter a text label"
       },
       {
+        "type": "color",
+        "id": "color_block_br_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
+      },
+      {
         "type": "image_picker",
         "id": "block_br_image",
         "label": "Image", 
@@ -238,6 +273,13 @@
         "id": "block_b_text",
         "label": "Label",
         "info": "Enter a text label"
+      },
+      {
+        "type": "color",
+        "id": "color_block_b_text_bg",
+        "label": "Label background",
+        "default": "#7dc7c0",
+        "info": "Text label background colour"
       },
       {
         "type": "image_picker",
