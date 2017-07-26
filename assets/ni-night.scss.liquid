@@ -3620,14 +3620,23 @@ $slideMaxHeight: 450px;
 .map-wrapper{
   position:relative;
   width:100%;
-  height:40vh;
+  height:50vh;
   margin-bottom:5em;
 
   #map{
     position:relative;
     width:100%;
-    height:40vh;
+    height:50vh;
     overflow:hidden;
+
+    iframe{
+      pointer-events:none;
+      position:relative;
+
+      &.active{
+        pointer-events:auto;
+      }
+    }
   }
 }
 
