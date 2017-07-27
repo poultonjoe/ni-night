@@ -2611,6 +2611,10 @@ hr{
   border-color:$colorSecondary;
 }
 
+#CartDrawer .additional_checkout_buttons{
+  display:none;
+}
+
 /**********************
  Header
  **********************/
@@ -2659,6 +2663,10 @@ hr{
         width:100%;
       }
 
+  .site-header-logo-link > img{
+    max-width:180px;
+  }
+
   .site-header-navigation{
     padding-top:$gutter;
     /*padding-bottom:$gutter;*/
@@ -2666,7 +2674,7 @@ hr{
 
     .site-header-main-navigation{
       font-size:1.25em;
-      margin-top:40px;
+      margin-top:25px;
       margin-right:-$gutter/2;
     }
     
@@ -2695,7 +2703,7 @@ hr{
 .mega-menu{
   display:none;
   position:absolute;
-  top:107px;
+  top:92px;
   left:$gutter;
   width:100%;
   width:calc(100% - #{$gutter*2});

@@ -1,0 +1,43 @@
+{% assign monday = settings.opening_hours_monday %}
+{% assign tuesday = settings.opening_hours_tuesday %}
+{% assign wednesday = settings.opening_hours_wednesday %}
+{% assign thursday = settings.opening_hours_thursday %}
+{% assign friday = settings.opening_hours_friday %}
+{% assign saturday = settings.opening_hours_saturday %}
+{% assign sunday = settings.opening_hours_sunday %}
+{% assign weekdays_same = false %}
+{% assign weekends_same = false %}
+{% if monday == tuesday && tuesday == wednesday && wednesday == thursday && thursday == friday %}
+  {% assign weekdays_same = true %}
+{% endif %}
+{% if saturday == sunday %}
+  {% assign weekends_same = true %}
+{% endif %}
+
+<h4 class="site-footer-content-title h5">Opening Hours</h4>
+<dl class="site-footer-opening-hours">
+  {% if weekdays_same %}
+    <dt class="site-footer-opening-hours-days">Monday to Friday</dt>
+    <dd class="site-footer-opening-hours-times">{{monday}}</dd>
+  {% else %}
+    <dt class="site-footer-opening-hours-days">Monday</dt>
+    <dd class="site-footer-opening-hours-times">{{monday}}</dd>
+    <dt class="site-footer-opening-hours-days">Tuesday</dt>
+    <dd class="site-footer-opening-hours-times">{{tuesday}}</dd>
+    <dt class="site-footer-opening-hours-days">Wednesday</dt>
+    <dd class="site-footer-opening-hours-times">{{wednesday}}</dd>
+    <dt class="site-footer-opening-hours-days">Thursday</dt>
+    <dd class="site-footer-opening-hours-times">{{thursday}}</dd>
+    <dt class="site-footer-opening-hours-days">Friday</dt>
+    <dd class="site-footer-opening-hours-times">{{friday}}</dd>
+  {% endif %}
+  {% if weekends_same %}
+    <dt class="site-footer-opening-hours-days">Saturday &amp; Sunday</dt>
+    <dd class="site-footer-opening-hours-times">11am - 6pm</dd>
+  {% else %}
+    <dt class="site-footer-opening-hours-days">Saturday</dt>
+    <dd class="site-footer-opening-hours-times">{{saturday}}</dd>
+    <dt class="site-footer-opening-hours-days">Sunday</dt>
+    <dd class="site-footer-opening-hours-times">{{sunday}}</dd>
+  {% endif %}
+</dl>

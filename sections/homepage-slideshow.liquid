@@ -8,11 +8,17 @@
 
  <script>
 $(function() {
+  var autoplaySpeed = parseInt({{section.settings.slide-speed}}, 10)
+
+  if (isNaN(autoplaySpeed)) {
+    autoplaySpeed = 3000
+  }
+
   $('.homepage-slideshow-slides').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: autoplaySpeed,
     dots: true,
     arrows: false
   })
@@ -23,6 +29,15 @@ $(function() {
   {
     "name": "Homepage Slider",
     "class": "homepage-slideshow",
+    "settings": [
+      {
+        "id": "slide-speed",
+        "type": "text",
+        "label": "Slide speed",
+        "default": "3000",
+        "info": "Default pause between slides in milliseconds"
+      }
+    ],
     "max_blocks": 3,
     "blocks": [
       {

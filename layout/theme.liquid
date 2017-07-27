@@ -236,7 +236,11 @@
             {% endif %}
               {% if settings.logo_use_image %}
                 <a href="/" itemprop="url" class="site-header-logo-link">
-                  <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+                  {% if settings.logo %}
+                    <img src="{{ settings.logo | file_url }}" alt="{{ shop.name }}" itemprop="logo">
+                  {% else %}
+                    <img src="{{ 'logo.jpg' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
+                  {% endif %}
                 </a>
               {% else %}
                 <a href="/" itemprop="url">{{ shop.name }}</a>
@@ -315,13 +319,7 @@
           </div>
 
           <div class="site-footer-content-section site-footer-opening grid__item large--five-twelfths text-center large--text-left">
-            <h4 class="site-footer-content-title h5">Opening Hours</h4>
-            <dl class="site-footer-opening-hours">
-              <dt class="site-footer-opening-hours-days">Monday to Friday</dt>
-              <dd class="site-footer-opening-hours-times">9am - 5pm</dd>
-              <dt class="site-footer-opening-hours-days">Saturday &amp; Sunday</dt>
-              <dd class="site-footer-opening-hours-times">11am - 6pm</dd>
-            </dl>
+            {% include 'opening-hours' %}
           </div>
 
           <div class="site-footer-content-section site-footer-contact grid__item large--five-twelfths text-center large--text-left">

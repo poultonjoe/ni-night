@@ -72,9 +72,8 @@
         "type": "image",
         "id": "logo",
         "label": "Custom logo",
-        "max-width": 225,
-        "max-height": 200,
-        "info": "225 x 200px .png required"
+        "max-width": 180,
+        "info": "180 x 109px .png required"
       },
       {
         "type": "header",
@@ -113,6 +112,52 @@
         "id": "newsletter_form_action",
         "label": "MailChimp form action URL",
         "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      },
+      {
+        "type": "header",
+        "content": "Opening Hours"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_monday",
+        "label": "Monday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_tuesday",
+        "label": "Tuesday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_wednesday",
+        "label": "Wednesday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_thursday",
+        "label": "Thursday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_friday",
+        "label": "Friday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_saturday",
+        "label": "Saturday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
+      },
+      {
+        "type": "text",
+        "id": "opening_hours_sunday",
+        "label": "Sunday",
+        "info": "Enter opening hours (e.g. 9am - 5pm)"
       }
     ]
   },
