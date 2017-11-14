@@ -13,29 +13,51 @@
 
 {% comment %}
   Loop through each collection, except 'frontpage'
+  If collections menu exists, use that, otherwise loop over all collections
 {% endcomment %}
-{% for collection in collections %}
+{% if linklists.collections %}
+  {% for link in linklists.collections.link %}
+    {% assign collection = link.object %}
+    {% unless collection.handle == 'frontpage' %}
+      {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
 
-  {% unless collection.handle == 'frontpage' %}
-
-    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
-
-    <div class="section-header">
-      <p class="h1 section-header__left">{{ collection_title }}</p>
-      <div class="section-header__right">
-        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">More {{ collection_title }} &rsaquo;</a>
+      <div class="section-header">
+        <p class="h1 section-header__left">{{ collection_title }}</p>
+        <div class="section-header__right">
+          <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">More {{ collection_title }} &rsaquo;</a>
+        </div>
       </div>
-    </div>
 
-    <div class="grid-uniform">
-      {% for product in collection.products limit:5 %}
-        {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
-        {% include 'product-grid-item' %}
-      {% endfor %}
-    </div>
+      <div class="grid-uniform">
+        {% for product in collection.products limit:5 %}
+          {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
 
-    {% unless forloop.last %}<hr>{% endunless %}
+      {% unless forloop.last %}<hr>{% endunless %}
+    {% endunless %}
+  {% endfor %}
+{% else %}
+  {% for collection in collections %}
+    {% unless collection.handle == 'frontpage' %}
+      {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
 
-  {% endunless %}
+      <div class="section-header">
+        <p class="h1 section-header__left">{{ collection_title }}</p>
+        <div class="section-header__right">
+          <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">More {{ collection_title }} &rsaquo;</a>
+        </div>
+      </div>
 
-{% endfor %}
+      <div class="grid-uniform">
+        {% for product in collection.products limit:5 %}
+          {% assign grid_item_width = 'large--one-fifth medium--one-half' %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+      </div>
+
+      {% unless forloop.last %}<hr>{% endunless %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
