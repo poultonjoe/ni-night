@@ -1,0 +1,18 @@
+<div class="mega-menu text-left">
+  <ul class="mega-menu-collections clearfix">
+  {% for link in linklists.store.links %}
+    {% assign nested_menu = link.title | handleize %}
+    <li class="mega-menu-collection-title{% if linklists[nested_menu].links.size > 0 %} has-nested-menu{% endif %}">
+      <a href="{{ link.url }}">{{ link.title }}</a>
+      {% if linklists[nested_menu].links.size > 0 %}
+        <ul class="mega-menu-collection-types">
+        {% for nested_link in linklists[nested_menu].links %}
+          <li class="mega-menu-collection-type">
+            <a href="{{ nested_link.url }}">{{ nested_link.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</div>

@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="h2">Find Us</div>
+</div>
+<div class="map-wrapper">
+  <div id="map">
+    <iframe
+      width="100%"
+      height="100%"
+      frameborder="0"
+      style="border:0"
+      allowfullscreen
+      src="https://www.google.com/maps/embed/v1/place?key={{settings.google_maps_api_key}}&q=Ni-Night+-+Children+Furniture+Store" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('#map')
+      .click(function(){
+          $(this).find('iframe').addClass('active')})
+      .mouseleave(function(){
+          $(this).find('iframe').removeClass('active')})
+  })
+</script>

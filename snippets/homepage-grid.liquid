@@ -1,0 +1,41 @@
+<div class="homepage-grid">
+  <div class="homepage-grid-column">
+    {% assign block_tl_url = settings.block_tl_url %}
+    {% assign block_tl_text = settings.block_tl_text %}
+    {% assign block_tl_image = settings.block_tl_image | img_url: '640x' %}
+    {% include 'image-block', url: block_tl_url, text: block_tl_text, image: block_tl_image, orientation: 'landscape', class: 'block-tl' %}
+
+    <div class="homepage-block-wrapper">
+      {% include 'social-links' %}
+
+      {% assign block_ml_url = settings.block_ml_url %}
+      {% assign block_ml_text = settings.block_ml_text %}
+      {% assign block_ml_image = settings.block_ml_image | img_url: '640x' %}
+      {% include 'image-block', url: block_ml_url, text: block_ml_text, image: block_ml_image, orientation: 'portrait', class: 'block-ml' %}
+    </div>
+
+    {% assign block_bl_url = settings.block_bl_url %}
+    {% assign block_bl_text = settings.block_bl_text %}
+    {% assign block_bl_image = settings.block_bl_image | img_url: '640x' %}
+    {% include 'image-block', url: block_bl_url, text: block_bl_text, image: block_bl_image, orientation: 'square', class: 'block-bl' %}
+  </div>
+  <div class="homepage-grid-column">
+    {% assign block_tr_url = settings.block_tr_url %}
+    {% assign block_tr_text = settings.block_tr_text %}
+    {% assign block_tr_image = settings.block_tr_image | img_url: '640x' %}
+    {% include 'image-block', url: block_tr_url, text: block_tr_text, image: block_tr_image, orientation: 'portrait', class: 'block-tr' %}
+
+    {% assign block_br_url = settings.block_br_url %}
+    {% assign block_br_text = settings.block_br_text %}
+    {% assign block_br_image = settings.block_br_image | img_url: '640x' %}
+    {% include 'image-block', url: block_br_url, text: block_br_text, image: block_br_image, orientation: 'portrait', class: 'block-br' %}
+  </div>
+  <div class="homepage-grid-column">
+    {% include 'social-links' %}
+    
+    {% assign block_b_url = settings.block_b_url %}
+    {% assign block_b_text = settings.block_b_text %}
+    {% assign block_b_image = settings.block_b_image | img_url: '1120x' %}
+    {% include 'image-block', url: block_b_url, text: block_b_text, image: block_b_image, orientation: 'panorama', class: 'block-b' %}
+  </div>
+</div>

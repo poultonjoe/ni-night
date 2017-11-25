@@ -9,63 +9,98 @@
   to a standalone collection page. E.g. /collections/vendors?q=Pepsi
 
 {% endcomment %}
+<div class="collections-sidebar-toggle text-center large--hide">
+  <button type="button" class="icon-fallback-text" aria-controls="CollectionsSidebar" aria-expanded="false">
+    <span class="icon icon-hamburger" aria-hidden="true"></span>
+    <span class="fallback-text">{{ 'collections.sidebar.menu' | t }}</span>
+  </button>
+</div>
+<aside id="CollectionsSidebar" class="collections-sidebar">
+  <div class="collections-sidebar-section">
+    <h2 class="collections-sidebar-header h4">{{ 'collections.sidebar.sort' | t }}</h2>
+    {% include 'collection-sorting' %}
+  </div>
 
-{% comment %}
-  Product tags in the current collection
-{% endcomment %}
-{% if collection.all_tags.size > 0 %}
-  <h2 class="h3">{{ 'collections.sidebar.tags' | t }}</h2>
+  {% if collections.size > 0 %}
+    <div class="collections-sidebar-section">
+      <h2 class="collections-sidebar-header h4">{{ 'collections.sidebar.collections' | t }}</h2>
+      <ul class="no-bullets">
+        {% for collection in collections %}
+          {% unless collection.handle == 'frontpage' %}
+            {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+            <li><a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ collection_title }}</a></li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
 
-  {% comment %}
-    To provide a 'catch-all' link at the top of the list,
-    check against the collection.handle, product type, and vendor.
-  {% endcomment %}
-  <ul class="no-bullets">
-    <li{% unless current_tags %} class="filter--active"{% endunless %}>
+  {% if collection.all_types.size > 0 %}
+    <div class="collections-sidebar-section">
+      <h2 class="collections-sidebar-header h4">{{ 'collections.sidebar.types' | t }}</h2>
+      <ul class="no-bullets">
+        {% for type in collection.all_types %}
+          <li>
+            {{ type | link_to_type }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</aside>
 
-      {% comment %}
-        Good for /collections/all collection and regular collections
-      {% endcomment %}
-      {% if collection.handle %}
-        <a href="/collections/{{ collection.handle }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
-        </a>
+<script>
+$(function() {
+  var $window = $(window)
+  var winW = $window.width()
+  
+  $window.on('resize', function() {
+    winW = $window.width()
+  })
 
-      {% comment %}
-        Good for automatic type collections
-      {% endcomment %}
-      {% elsif collection.current_type %}
-        <a href="{{ collection.current_type | url_for_type }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
-        </a>
+  // Toggle sidebar
+  $('.collections-sidebar-toggle > button').click(function() {
+    $('.collections-sidebar').slideToggle(250)
+  })
 
-      {% comment %}
-        Good for automatic vendor collections
-      {% endcomment %}
-      {% elsif collection.current_vendor %}
-        <a href="{{ collection.current_vendor | url_for_vendor }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
-        </a>
-      {% endif %}
-    </li>
+  // Sticky sidebar
+  $window.on('scroll', stickySidebar)
+  stickySidebar()
 
-    {% comment %}
-      And for the good stuff, loop through the tags themselves.
-    {% endcomment %}
-    {% for tag in collection.all_tags %}
-      {% if current_tags contains tag %}
-        <li class="filter--active">
-          {{ tag | link_to_remove_tag: tag }}
-        </li>
-      {% else %}
-        <li>
-          {% comment %}
-            Use link_to_add_tag if you want to allow filtering
-            by multiple tags
-          {% endcomment %}
-          {{ tag | link_to_tag: tag }}
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endif %}
+  function stickySidebar() {
+    var $container = $('#PageContainer')
+    var $collection = $('.collection')
+    var $sidebar = $('.collections-sidebar')
+    var $footer = $('.site-footer')
+    var gutter = 30
+    var large = 769
+
+    if (winW >= large && $sidebar.outerHeight() < $window.height()) {
+      var pastHeader = $window.scrollTop() > $collection.offset().top - gutter
+      var reachedFooter = $window.scrollTop() > $footer.offset().top - $sidebar.outerHeight() - gutter
+
+      if (reachedFooter) {
+        $container.removeClass('is-moved-by-drawer')
+        $sidebar.removeClass('sticky-top')
+        $sidebar.addClass('sticky-bottom')
+        $sidebar.css({ width: $sidebar.parent().width() })
+      } else if (pastHeader) {
+        $container.removeClass('is-moved-by-drawer')
+        $sidebar.removeClass('sticky-bottom')
+        $sidebar.addClass('sticky-top')
+        $sidebar.css({ width: $sidebar.parent().width() })
+      } else {
+        $container.addClass('is-moved-by-drawer')
+        $sidebar.removeClass('sticky-bottom')
+        $sidebar.removeClass('sticky-top')
+        $sidebar.css({ width: 'auto' })
+      }
+    } else {
+      $container.addClass('is-moved-by-drawer')
+      $sidebar.removeClass('sticky-bottom')
+      $sidebar.removeClass('sticky-top')
+      $sidebar.css({ width: 'auto' })
+    }
+  }
+})
+</script>

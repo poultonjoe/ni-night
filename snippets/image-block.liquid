@@ -1,0 +1,6 @@
+<div class="image-block {{text | handleize}} {{orientation}} {{class}}">
+  <a class="image-block-link" href="{{url}}" title="{{text}}">
+    <img class="image-block-image" src="{{image}}" alt="{{text}}">
+    {% if text %}<strong class="image-block-label">{{text}}</strong>{% endif %}
+  </a>
+</div>
