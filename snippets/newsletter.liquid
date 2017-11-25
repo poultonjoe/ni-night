@@ -1,0 +1,81 @@
+{% if settings.newsletter_form_action != blank %}
+  <form action="{{ settings.newsletter_form_action }}" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="mailchimp-form">
+    <input type="text" class="newsletter-input" value="{% if customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_name' | t }}" name="NAME" id="name" aria-label="{{ 'general.newsletter_form.newsletter_name' | t }}" autocorrect="off" autocapitalize="off">
+    <input type="email" class="newsletter-input" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+    <button type="submit" class="mailchimp-submit newsletter-submit-button icon-fallback-text">
+      <span class="icon icon-circle-arrow-right" aria-hidden="true"></span>
+      <span class="fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+    </button>
+  </form>
+{% else %}
+  {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+      <input type="text" class="newsletter-input" value="{% if customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_name' | t }}" name="contact[name]" id="Name" aria-label="{{ 'general.newsletter_form.newsletter_name' | t }}" autocorrect="off" autocapitalize="off">
+      <input type="email" class="newsletter-input" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <button type="submit" class="newsletter-submit-button icon-fallback-text">
+        <span class="icon icon-circle-arrow-right" aria-hidden="true"></span>
+        <span class="fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+      </button>
+    {% endif %}
+  {% endform %}
+{% endif %}
+
+<script>
+$(function() {
+  var KEY = 'has_signed_up_to_newsletter'
+  var $newsletter = $('.newsletter')
+  var $form = $('.mailchimp-form')
+  var $submit = $('.mailchimp-submit')
+  
+  {% if form.posted_successfully? %}
+    setLocalStorageItem()
+  {% endif %}
+
+  if (!localStorage.getItem(KEY)) {
+    $newsletter.show()
+  }
+
+  $submit.on('click', function (e) {
+    e.preventDefault()
+
+    $('.error', $form).removeClass('error')
+    $('.form-error').remove()
+
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action').replace('post', 'post-json'),
+        data: $form.serialize(),
+        cache: false,
+        dataType: 'jsonp',
+        jsonp: 'c',
+        contentType: 'application/json; charset=utf-8',
+        error: function(err) { alert('Could not connect to the registration server. Please try again later.'); },
+        success: function(data) {
+          if (data.result != 'success') {
+            $('input[type="email"]', $form).addClass('error')
+            var msgs = data.msg.split(/\d+\s+\-\s+/g).slice(1)
+            if (msgs.length > 1) {
+              $form.append('<div class="note form-error"><p>There were errors with the form.</p><ul>' + msgs.map(function(msg) { return '<li>' + msg + '</li>' }).join('') + '</ul></div>')
+            } else {
+              $form.append('<div class="note form-error">' + msgs[0] + '</div>')
+            }
+          } else {
+            setLocalStorageItem()
+            $form.replaceWith('<div class="note form-success">' + data.msg + '</div>')
+            setTimeout(function () {
+              $newsletter.hide()
+            }, 3000)
+          }
+        }
+    });
+  })
+
+  function setLocalStorageItem () {
+    localStorage.setItem(KEY, true)
+  }
+})
+</script>

@@ -37,7 +37,7 @@
   {% assign sold_out = false %}
 {% endif %}
 
-<div class="grid__item {{ grid_item_width }}">
+<div class="product-grid-item grid__item {{ grid_item_width }}">
 
   {% comment %}
     Link to your product with the 'within: collection' filter for the link to be aware of the collection.
@@ -52,7 +52,11 @@
 
   {% endcomment %}
   <a href="{{ product.url | within: collection }}" class="grid__image">
-    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% comment %}<img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">{% endcomment %}
+    {{ '//cdn.shopify.com/s/images/themes/product-1.png' | img_tag }}
+    {% if on_sale %}
+    {% include 'sale-flash' %}
+    {% endif %}
   </a>
 
   <p class="h6">
@@ -64,27 +68,24 @@
       if your variants have different prices.
     {% endcomment %}
     {% if on_sale %}
+      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+      <s class="original-price">{{ product.compare_at_price | money }}</s>
       {% if product.price_varies %}
         {% assign sale_price = product.price | money %}
         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
       {% else %}
-        <strong>{{ 'products.product.on_sale' | t }}</strong>
-        {{ product.price | money }}
+        <strong class="current-price">{{ product.price | money }}</strong>
       {% endif %}
     {% else %}
       {% if product.price_varies %}
         {% assign price = product.price | money %}
         {{ 'products.general.from_text_html' | t: price: price }}
       {% else %}
-        {{ product.price | money }}
+        <strong class="current-price">{{ product.price | money }}</strong>
       {% endif %}
     {% endif %}
     {% if sold_out %}
-      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-    {% endif %}
-    {% if on_sale %}
-      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-      <br><s>{{ product.compare_at_price | money }}</s>
+      <strong>{{ 'products.product.sold_out' | t }}</strong>
     {% endif %}
   </p>
 

@@ -1,0 +1,58 @@
+<div class="product-images">
+  <button class="product-images-button product-images-button-previous icon-fallback-text">
+    <span class="icon icon-circle-arrow-up medium-down--hide large--show"></span>
+    <span class="icon icon-circle-arrow-left medium-down--show large--hide"></span>
+    <span class="fallback-text">Previous</span>
+  </button>
+
+  <div class="product-images-viewport" id="ProductThumbs">
+    {% for image in images %}
+      <div class="product-image">
+        <a href="{{ image.src | img_url: 'large' }}" class="product-single__thumbnail">
+          <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="product-images-button product-images-button-next icon-fallback-text">
+    <span class="icon icon-circle-arrow-down medium-down--hide large--show"></span>
+    <span class="icon icon-circle-arrow-right medium-down--show large--hide"></span>
+    <span class="fallback-text">Next</span>
+  </button>
+</div>
+
+<script>
+$(function() {
+  $('.product-images-viewport').slick({
+      vertical: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      prevArrow: '.product-images-button-previous',
+      nextArrow: '.product-images-button-next',
+      responsive: [
+        {
+          breakpoint: 769,
+          settings: {
+            vertical: false,
+            slidesToShow: 4
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            vertical: false,
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 450,
+          settings: {
+            vertical: false,
+            slidesToShow: 2
+          }
+        }
+      ]
+  })
+})
+</script>

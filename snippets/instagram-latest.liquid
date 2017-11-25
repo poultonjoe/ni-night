@@ -1,0 +1,17 @@
+{% include 'homepage-block' %}
+
+<script>
+$(function() {
+  var hashtag = 'ninightsingapore'
+  var $block = $('.ninightsingapore')
+  var $img = $block.find('.homepage-block-image')
+
+  $.getJSON('https://www.instagram.com/explore/tags/' + hashtag + '/?__a=1')
+    .done(function(data) {
+      $img[0].src = data.tag.media.nodes[0].thumbnail_src
+    })
+    .fail(function() {
+      $block.remove()
+    });
+})
+</script>

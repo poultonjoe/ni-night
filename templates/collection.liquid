@@ -5,41 +5,32 @@
     - http://docs.shopify.com/themes/liquid-variables/collection
 
 {% endcomment %}
-
-{% paginate collection.products by 12 %}
+{% assign products_per_page = 9 %}
+{% paginate collection.products by products_per_page %}
 
 {% include 'breadcrumb' %}
 
-{% comment %}
-  Use .grid--rev so that the collection tags appear below the products on mobile
-{% endcomment %}
-<div class="grid--rev">
-  <div class="grid__item large--three-quarters">
+{% if collection.description != blank %}
+  <header class="section-header text-center">
+    <h1 class="section-header__title h4">{{ collection.title }}</h1>
+    <div class="rte rte--header">
+      {{ collection.description }}
+    </div>
+  </header>
+{% else %}
+  <header class="section-header text-center">
+    <h1 class="section-header__title section-header__left h4">{{ collection.title }}</h1>
+  </header>
+{% endif %}
 
-    {% comment %}
-      Different markup if a collection description exists
-    {% endcomment %}
-    {% if collection.description != blank %}
-      <header class="section-header">
-        <h1 class="section-header__title">{{ collection.title }}</h1>
-        <div class="rte rte--header">
-          {{ collection.description }}
-        </div>
-      </header>
-      <hr>
-      <div class="section-header">
-        <div class="section-header__right">
-          {% include 'collection-sorting' %}
-        </div>
-      </div>
-    {% else %}
-      <header class="section-header">
-        <h1 class="section-header__title section-header__left">{{ collection.title }}</h1>
-        <div class="section-header__right">
-          {% include 'collection-sorting' %}
-        </div>
-      </header>
-    {% endif %}
+<hr>
+
+<div class="collection grid">
+  <div class="grid__item large--one-quarter">
+    {% include 'collection-sidebar' %}
+  </div>
+
+  <div class="grid__item large--three-quarters">
 
     {% comment %}
       Use class grid-uniform to have evenly sized columns clear
@@ -83,17 +74,23 @@
 
     </div>
 
-    {% if paginate.pages > 1 %}
-      <hr>
-      <div class="pagination">
+    <div class="pagination">
+      {% assign product_offset = paginate.current_offset | plus: 1 %}
+      {% assign page_product_count = paginate.current_offset | plus: products_per_page %}
+      <span class="product-count">
+        Showing items {{ product_offset }}
+        -
+        {% if page_product_count <= paginate.items %}
+          {{page_product_count}}
+        {% else %}
+          {{paginate.items}}
+        {% endif %}
+        of {{paginate.items}}.
+      </span>
+      {% if paginate.pages > 1 %}
         {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
-      </div>
-    {% endif %}
-
-  </div>
-
-  <div class="grid__item large--one-quarter">
-    {% include 'collection-sidebar' %}
+      {% endif %}
+    </div>
   </div>
 </div>
 
