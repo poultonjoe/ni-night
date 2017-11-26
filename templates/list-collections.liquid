@@ -15,8 +15,9 @@
   Loop through each collection, except 'frontpage'
   If collections menu exists, use that, otherwise loop over all collections
 {% endcomment %}
-{% if linklists.collections %}
-  {% for link in linklists.collections.link %}
+{% assign collection_list_length = linklists.collections.links | size %}
+{% if collection_list_length > 0 %}
+  {% for link in linklists.collections.links %}
     {% assign collection = link.object %}
     {% unless collection.handle == 'frontpage' %}
       {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
