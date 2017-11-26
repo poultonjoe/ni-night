@@ -52,8 +52,7 @@
 
   {% endcomment %}
   <a href="{{ product.url | within: collection }}" class="grid__image">
-    {% comment %}<img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">{% endcomment %}
-    {{ '//cdn.shopify.com/s/images/themes/product-1.png' | img_tag }}
+    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
     {% if on_sale %}
     {% include 'sale-flash' %}
     {% endif %}
