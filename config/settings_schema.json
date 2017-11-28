@@ -1,7 +1,6 @@
 [
   {
     "name": "theme_info",
-    "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0070\/7032\/files\/2010_6_23_Shopify-Green_256x256.jpg",
     "settings": [
       {
         "type": "header",
@@ -13,7 +12,8 @@
       },
       {
         "type": "paragraph",
-        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http:\/\/docs.shopify.com\/themes\/theme-templates\/settings) to learn more about how you can make the theme customizable."
+        "content":
+          "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http://docs.shopify.com/themes/theme-templates/settings) to learn more about how you can make the theme customizable."
       }
     ]
   },
@@ -35,7 +35,7 @@
         "type": "color",
         "id": "color_secondary",
         "label": "Secondary",
-        "default": "#7dc7c0",
+        "default": "#55c0d4",
         "info": "Used for secondary buttons, borders, and callouts"
       },
       {
@@ -111,7 +111,8 @@
         "type": "text",
         "id": "newsletter_form_action",
         "label": "MailChimp form action URL",
-        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+        "info":
+          "[Where do I find my MailChimp form action URL?](http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action)"
       },
       {
         "type": "header",
@@ -162,185 +163,6 @@
     ]
   },
   {
-    "name": "Home page",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Top Left Block"
-      },
-      {
-        "type": "text",
-        "id": "block_tl_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_tl_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_tl_image",
-        "label": "Image", 
-        "info": "Upload an image (landscape)"
-      },
-      {
-        "type": "text",
-        "id": "block_tl_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      },
-      {
-        "type": "header",
-        "content": "Middle Left Block"
-      },
-      {
-        "type": "text",
-        "id": "block_ml_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_ml_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_ml_image",
-        "label": "Image", 
-        "info": "Upload an image (portrait)"
-      },
-      {
-        "type": "text",
-        "id": "block_ml_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      },
-      {
-        "type": "header",
-        "content": "Bottom Left Block"
-      },
-      {
-        "type": "text",
-        "id": "block_bl_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_bl_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_bl_image",
-        "label": "Image", 
-        "info": "Upload an image (square)"
-      },
-      {
-        "type": "text",
-        "id": "block_bl_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      },
-      {
-        "type": "header",
-        "content": "Top Right Block"
-      },
-      {
-        "type": "text",
-        "id": "block_tr_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_tr_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_tr_image",
-        "label": "Image", 
-        "info": "Upload an image (portrait)"
-      },
-      {
-        "type": "text",
-        "id": "block_tr_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      },
-      {
-        "type": "header",
-        "content": "Bottom Right Block"
-      },
-      {
-        "type": "text",
-        "id": "block_br_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_br_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_br_image",
-        "label": "Image", 
-        "info": "Upload an image (portrait)"
-      },
-      {
-        "type": "text",
-        "id": "block_br_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      },
-      {
-        "type": "header",
-        "content": "Bottom Block"
-      },
-      {
-        "type": "text",
-        "id": "block_b_text",
-        "label": "Label",
-        "info": "Enter a text label"
-      },
-      {
-        "type": "color",
-        "id": "color_block_b_text_bg",
-        "label": "Label background",
-        "default": "#7dc7c0",
-        "info": "Text label background colour"
-      },
-      {
-        "type": "image_picker",
-        "id": "block_b_image",
-        "label": "Image", 
-        "info": "Upload an image (full width landscape)"
-      },
-      {
-        "type": "text",
-        "id": "block_b_url",
-        "label": "Link",
-        "info": "Enter a url to link to from the slide"
-      }
-    ]
-  },
-  {
     "name": "Cart page",
     "settings": [
       {
@@ -377,31 +199,31 @@
         "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook URL",
-        "info": "https:\/\/www.facebook.com\/ni-night"
+        "info": "https://www.facebook.com/ni-night"
       },
       {
         "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram URL",
-        "info": "https:\/\/www.instagram.com\/ninightsingapore"
+        "info": "https://www.instagram.com/ninightsingapore"
       },
       {
         "type": "text",
         "id": "social_pinterest_link",
         "label": "Pinterest URL",
-        "info": "https:\/\/pinterest.com\/ni-night"
+        "info": "https://pinterest.com/ni-night"
       },
       {
         "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter URL",
-        "info": "https:\/\/twitter.com\/ni-night"
+        "info": "https://twitter.com/ni-night"
       },
       {
         "type": "text",
         "id": "social_whatsapp_link",
         "label": "Whatsapp URL",
-        "info": "https:\/\/whatsapp.com\/ni-night"
+        "info": "https://whatsapp.com/ni-night"
       }
     ]
   },

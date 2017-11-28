@@ -1,0 +1,301 @@
+<div class="homepage-grid">
+  <div class="homepage-grid-column">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'tl-image-block' %}
+          {% assign block_tl_image = block.settings.image | img_url: '640x' %}
+          {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_tl_image, orientation: 'landscape', class: 'block-tl' %}
+        {% when 'ml-image-block' %}
+          <div class="homepage-block-wrapper">
+            {% include 'social-links' %}
+            {% assign block_ml_image = block.settings.image | img_url: '640x' %}
+            {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_ml_image, orientation: 'portrait', class: 'block-ml' %}
+          </div>
+        {% when 'bl-image-block' %}
+          {% assign block_bl_image = block.settings.image | img_url: '640x' %}
+          {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_bl_image, orientation: 'square', class: 'block-bl' %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+  <div class="homepage-grid-column">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'tr-image-block' %}
+          {% assign block_tr_image = block.settings.image | img_url: '640x' %}
+          {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_tr_image, orientation: 'portrait', class: 'block-tr' %}
+        {% when 'br-image-block' %}
+          {% assign block_br_image = block.settings.image | img_url: '640x' %}
+          {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_br_image, orientation: 'portrait', class: 'block-br' %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+  <div class="homepage-grid-column">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'b-image-block' %}
+          {% include 'social-links' %}
+          {% assign block_b_image = block.settings.image | img_url: '1120x' %}
+          {% include 'image-block', url: block.settings.url, text: block.settings.label, image: block_b_image, orientation: 'panorama', class: 'block-b' %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'tl-image-block' %}
+      .block-tl .image-block-label{
+        background: {{block.settings.color}};
+      }
+    {% when 'ml-image-block' %}
+      .block-ml .image-block-label{
+        background: {{block.settings.color}};
+      }
+    {% when 'bl-image-block' %}
+      .block-bl .image-block-label{
+        background: {{block.settings.color}};
+      }
+    {% when 'tr-image-block' %}
+      .block-tr .image-block-label{
+        background: {{block.settings.color}};
+      }
+    {% when 'br-image-block' %}
+      .block-br .image-block-label{
+        background: {{block.settings.color}};
+      }
+    {% when 'b-image-block' %}
+      .block-b .image-block-label{
+        background: {{block.settings.color}};
+      }
+  {% endcase %}
+{% endfor %}
+</style>
+
+{% schema %}
+  {
+    "name": "Homepage images grid",
+    "class": "homepage-grid-section",
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "type": "tl-image-block",
+        "name": "Top Left Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the top left block (landscape orientation)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "For him"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#8ed2ed"
+          }
+        ]
+      },
+      {
+        "type": "ml-image-block",
+        "name": "Middle Left Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the middle left block (portrait orientation)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "On sale"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#55c0d4"
+          }
+        ]
+      },
+      {
+        "type": "bl-image-block",
+        "name": "Bottom Left Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the bottom left block (square)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "#ninightsingapore"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#4f99ea"
+          }
+        ]
+      },
+      {
+        "type": "tr-image-block",
+        "name": "Top right Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the top right block (portrait orientation)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "For her"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#de78ae"
+          }
+        ]
+      },
+      {
+        "type": "br-image-block",
+        "name": "Bottom right Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the bottom right block (portrait orientation)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "Inspiration"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#55c0d4"
+          }
+        ]
+      },
+      {
+        "type": "b-image-block",
+        "name": "Bottom Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image", 
+            "info": "Upload an image to be added to the bottom block (panorama)"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "info": "Enter a url to link to from the block"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "info": "Enter the text to be shown on the block",
+            "default": "New arrivals"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Label background colour",
+            "info": "Pick a background colour for the text",
+            "default": "#c9c74d"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage image grid",
+        "category": "Images",
+        "blocks": [
+          {
+            "type": "tl-image-block"
+          },
+          {
+            "type": "ml-image-block"
+          },
+          {
+            "type": "bl-image-block"
+          },
+          {
+            "type": "tr-image-block"
+          },
+          {
+            "type": "br-image-block"
+          },
+          {
+            "type": "b-image-block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

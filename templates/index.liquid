@@ -6,6 +6,8 @@
   More info on global variables (available on all templates):
     - http://docs.shopify.com/themes/liquid-variables/global
 {% endcomment %}
-
+{% comment %}
 {% section 'homepage-slideshow' %}
 {% include 'homepage-grid' %}
+{% endcomment %}
+{{ content_for_index }}

@@ -27,7 +27,7 @@ $(function() {
 
 {% schema %}
   {
-    "name": "Homepage Slider",
+    "name": "Homepage banner slideshow",
     "class": "homepage-slideshow",
     "settings": [
       {
@@ -56,6 +56,17 @@ $(function() {
             "label":     "Slide link",
             "info":      "Enter a url to link to from the slide",
             "placeholder": "http://"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage banner slideshow",
+        "category": "Images",
+        "blocks": [
+          {
+            "type": "image"
           }
         ]
       }
