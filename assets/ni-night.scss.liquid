@@ -3453,7 +3453,6 @@ $slideMaxHeight: 450px;
   margin-bottom:2em;
   position:relative;
   overflow:hidden;
-  background:rgba($colorSecondary, 0.05);
   
   @include at-query($min, $large) {
     margin-bottom:0;
@@ -3685,7 +3684,8 @@ $slideMaxHeight: 450px;
         margin-bottom:3em;
       }
 
-      > p{
+      > p,
+      > h4{
         @extend .h4;
         margin-top:0;
         margin-bottom:1em;
@@ -3699,6 +3699,14 @@ $slideMaxHeight: 450px;
       }
     }
   }  
+}
+
+/**********************
+  About Page
+ **********************/
+
+#about-us{
+
 }
 
 /**********************

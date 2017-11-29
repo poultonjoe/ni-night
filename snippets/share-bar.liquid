@@ -1,36 +1,20 @@
-{% assign url = shop.url | append: url %}
-
+{% assign link = shop.url | append: url %}
 <div class="share-bar">
   <span class="share-bar-label">Share:</span>
   <div class="share-bar-icons">
-    <button class="addthis_share_button icon-fallback-text" data-service="facebook" data-url="{{url}}" data-title="{{title}}">
-      <span class="icon icon-facebook" aria-hidden="true"></span>
-      <span class="fallback-text">Facebook</span>
-    </button>
-    <button class="addthis_share_button icon-fallback-text" data-service="pinterest" data-url="{{url}}" data-title="{{title}}">
-      <span class="icon icon-pinterest" aria-hidden="true"></span>
-      <span class="fallback-text">Pinterest</span>
-    </button>
-    <button class="addthis_share_button icon-fallback-text" data-service="twitter" data-url="{{url}}" data-title="{{title}}">
-      <span class="icon icon-twitter" aria-hidden="true"></span>
-      <span class="fallback-text">Twitter</span>
-    </button>
-    <button class="addthis_share_button icon-fallback-text" data-service="whatsapp" data-url="{{url}}" data-title="{{title}}">
-      <span class="icon icon-whatsapp" aria-hidden="true"></span>
-      <span class="fallback-text">Whatsapp</span>
-    </button>
-    <button class="addthis_share_button icon-fallback-text" data-service="email" data-url="{{url}}" data-title="{{title}}">
-      <span class="icon icon-email" aria-hidden="true"></span>
-      <span class="fallback-text">Email</span>
-    </button>
+    <button class="addthis_share_button icon icon-facebook" title="Share on Facebook" data-service="facebook" data-url="{{link}}" data-title="{{title}}"></button>
+    <button class="addthis_share_button icon icon-pinterest" title="Share on Pinterest" data-service="pinterest" data-url="{{link}}" data-title="{{title}}"></button>
+    <button class="addthis_share_button icon icon-twitter" title="Share on Twitter" data-service="twitter" data-url="{{link}}" data-title="{{title}}"></button>
+    <button class="addthis_share_button icon icon-whatsapp" title="Share on Whatsapp" data-service="whatsapp" data-url="{{link}}" data-title="{{title}}"></button>
+    <button class="addthis_share_button icon icon-email" title="Share via email" data-service="email" data-url="{{link}}" data-title="{{title}}"></button>
   </div>
 </div>
 
 <script>
 $(function() {
   addthis.share({
-    'container_selector':'.share-bar-icons',
-    'button_selector': '.addthis_share_button'
-  })
-})
+    container_selector: '.share-bar-icons',
+    button_selector: '.addthis_share_button',
+  });
+});
 </script>
