@@ -28,19 +28,19 @@ assets/logo.png:
 assets/modernizr.min.js:
   development: 2017-06-24T18:55:06+08:00   dc21cffad945a84cbbe770d52b1a0ded
 assets/ni-night.scss.liquid:
-  development: 2017-11-29T03:31:50+08:00   bb4fbf9730dbc12228b188d1755c5504
+  development: 2017-11-29T05:28:52+08:00   01d02bfec5044e36d4c344c2153f1312
 assets/respond-proxy.html:
   development: 2017-06-24T18:55:06+08:00   75002d74a330bff6bf069284da503b4c
 assets/respond.min.js:
   development: 2017-06-24T18:55:06+08:00   a2684e9b8fa50d6d11c56a9ada068528
 assets/timber.js.liquid:
-  development: 2017-06-24T18:55:06+08:00   8663e17d15e94386b5d6fb7c3e44b0bf
+  development: 2017-11-29T04:42:12+08:00   8663e17d15e94386b5d6fb7c3e44b0bf
 config/settings_data.json:
   development: 2017-11-28T07:06:30+08:00   33725cd55babba36a8d5604035a93ff3
 config/settings_schema.json:
-  development: 2017-11-28T07:06:20+08:00   1e8fcbf666a79c01b00574f89ef7b96f
+  development: 2017-11-29T03:49:06+08:00   94346b738b5243a2885d76183d23fe06
 layout/theme.liquid:
-  development: 2017-07-27T17:55:48+08:00   b145e015cddae621369c3b7538c2379b
+  development: 2017-11-29T03:51:22+08:00   49b7b8312e239d2cef5262ef97a97e41
 locales/en.default.json:
   development: 2017-07-21T11:50:44+08:00   caa15c3ff2304957ec2c8fc4f1e730e3
 sections/homepage-grid.liquid:
@@ -50,7 +50,7 @@ sections/homepage-slideshow.liquid:
 sections/inspiration-blocks.liquid:
   development: 2017-07-25T12:44:14+08:00   02a840234a4202470e43ed6522fcbcf1
 sections/testimonial.liquid:
-  development: 2017-11-28T02:39:45+08:00   0f1328ffdbd531de497c26c5ba8190de
+  development: 2017-11-29T04:49:59+08:00   edc45412f8779eaad9b6fad2c2e9c03a
 snippets/ajax-cart-template.liquid:
   development: 2017-07-27T16:55:11+08:00   febc672cacdd5b681ed5e0f37607fab0
 snippets/blog-sidebar.liquid:
@@ -72,7 +72,7 @@ snippets/instagram-latest.liquid:
 snippets/map.liquid:
   development: 2017-07-26T13:48:01+08:00   2bd8c812944469198cd54ee6de1e610b
 snippets/mega-menu.liquid:
-  development: 2017-07-17T09:42:30+08:00   75305453fcbfdfe580c0feb54e400b02
+  development: 2017-11-29T05:23:51+08:00   59c37c79050b0bb8b079d942b2541090
 snippets/newsletter.liquid:
   development: 2017-07-25T10:36:39+08:00   5072f0997a75843de640d79f4041127d
 snippets/oldIE-js.liquid:

@@ -237,7 +237,7 @@
               {% if settings.logo_use_image %}
                 <a href="/" itemprop="url" class="site-header-logo-link">
                   {% if settings.logo %}
-                    <img src="{{ settings.logo | file_url }}" alt="{{ shop.name }}" itemprop="logo">
+                    <img src="{{ settings.logo | img_url: 180x }}" alt="{{ shop.name }}" itemprop="logo">
                   {% else %}
                     <img src="{{ 'logo.jpg' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
                   {% endif %}
@@ -343,6 +343,13 @@
           </div>
         </div>
       </div>
+      {% if settings.footer_payment_enable %}
+        <div class="payment-methods">
+          {% for type in shop.enabled_payment_types %}
+            <img src="{{ type | payment_type_img_url }}" alt="{{ type | replace: "_", " " | capitalize }}" />
+          {% endfor %}
+        </div>
+      {% endif %}
     </footer>
     <!-- //site-footer -->
   </div>

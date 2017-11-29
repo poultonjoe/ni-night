@@ -1,4 +1,4 @@
-<div class="mega-menu text-left">
+{% comment %} <div class="mega-menu text-left">
   <ul class="mega-menu-collections clearfix">
   {% for link in linklists.store.links %}
     {% assign nested_menu = link.title | handleize %}
@@ -15,4 +15,42 @@
       {% endif %}
     </li>
   {% endfor %}
+  </ul>
+</div> {% endcomment %}
+<div class="mega-menu text-left">
+  <ul class="mega-menu-collections clearfix">
+    {% assign menu_length = linklists.store.links | size %}
+    {% assign count = 0 %}
+    {% for link in linklists.store.links %}
+      {% assign nested_menu = link.title | handleize %}
+      {% if linklists[nested_menu].links.size > 0 %}
+        {% assign count = count | plus: 1 %}
+        <li class="mega-menu-collection has-nested-menu">
+          <a class="mega-menu-collection-title" href="{{ link.url }}">{{ link.title }}</a>
+            <ul class="mega-menu-collection-types">
+            {% for nested_link in linklists[nested_menu].links %}
+              <li class="mega-menu-collection-type">
+                <a href="{{ nested_link.url }}">{{ nested_link.title }}</a>
+              </li>
+            {% endfor %}
+            </ul>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% if count < menu_length %}
+      <li class="mega-menu-collection">
+        <ul>
+          {% for link in linklists.store.links %}
+            {% assign nested_menu = link.title | handleize %}
+            {% if linklists[nested_menu].links.size < 1 %}
+              <li class="mega-menu-collection standalone">
+                <a class="mega-menu-collection-title" href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% endif %}
+  </ul>
 </div>

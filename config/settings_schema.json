@@ -69,10 +69,9 @@
         "label": "Use custom logo"
       },
       {
-        "type": "image",
+        "type": "image_picker",
         "id": "logo",
         "label": "Custom logo",
-        "max-width": 180,
         "info": "180 x 109px .png required"
       },
       {
@@ -113,6 +112,12 @@
         "label": "MailChimp form action URL",
         "info":
           "[Where do I find my MailChimp form action URL?](http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action)"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_payment_enable",
+        "label": "Show payment icons",
+        "default": true
       },
       {
         "type": "header",

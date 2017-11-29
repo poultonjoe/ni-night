@@ -1,56 +1,85 @@
 <div class="testimonial-container" data-section-id="{{ section.id }}">
-   {% if section.settings.title != blank %}
-      <h2 class="title center">{{ section.settings.title}}</h2>
+  {% if section.settings.title != blank %}
+    <h2 class="testimonial-title">{{ section.settings.title}}</h2>
   {% endif %}
   {% if section.blocks.size > 0 %}
-    <div class="testimonial-bar center {% if section.settings.transparency != blank %}set-transparency{% endif %}">
-      <div id="testimonial_slider" class="flexslider testimonial_slider">
-        <ul class="slides">
-          {% for block in section.blocks %}
-            <li class="quotes-slide--{{ block.id }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
-              <div class="testimonial-block">
+    {% if section.blocks.size > 0 %}
+      <button class="testimonial-arrow testimonial-prev icon-fallback-text">
+        <span class="icon icon-circle-arrow-left"></span>
+        <span class="fallback-text">Prev</span>
+      </button>
+    {% endif %}
+    <ul class="testimonial-slides">
+      {% for block in section.blocks %}
+        <li class="quotes-slide quotes-slide--{{ block.id }}" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
+          <div class="testimonial-block">
 
-                {{block.settings.testimonial}}
+            {{block.settings.testimonial}}
 
-                {% if block.settings.name != blank %}
-                <p>
-                  <span class="name">{{ block.settings.name }}</span><br>
+            {% if block.settings.name != blank %}
+            <p>
+              <span class="testimonial-name">{{ block.settings.name }}</span><br>
 
-                  {% if block.settings.site_link != blank %}
-                    <a href="{{block.settings.site_link}}">
-                  {% endif %}
+              {% if block.settings.site_link != blank %}
+                <a href="{{block.settings.site_link}}">
+              {% endif %}
 
-                  {% if block.settings.site != blank %}
-                    {{block.settings.site}}
-                  {% endif %}
+              {% if block.settings.site != blank %}
+                {{block.settings.site}}
+              {% endif %}
 
-                  {% if block.settings.site_link != blank %}
-                    </a>
-                  {% endif %}
-                </p>
-                {% else %}
-                <p>
-                {% if block.settings.site_link != blank %}
-                    <a href="{{block.settings.site_link}}">
-                  {% endif %}
+              {% if block.settings.site_link != blank %}
+                </a>
+              {% endif %}
+            </p>
+            {% else %}
+            <p>
+            {% if block.settings.site_link != blank %}
+                <a href="{{block.settings.site_link}}">
+              {% endif %}
 
-                  {% if block.settings.site != blank %}
-                    {{block.settings.site}}
-                  {% endif %}
+              {% if block.settings.site != blank %}
+                {{block.settings.site}}
+              {% endif %}
 
-                  {% if block.settings.site_link != blank %}
-                    </a>
-                  {% endif %}
-                  </p>
-                {% endif %}
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+              {% if block.settings.site_link != blank %}
+                </a>
+              {% endif %}
+              </p>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if section.blocks.size > 0 %}
+      <button class="testimonial-arrow testimonial-next icon-fallback-text">
+        <span class="icon icon-circle-arrow-right"></span>
+        <span class="fallback-text">Next</span>
+      </button>
+    {% endif %}
   {% endif %}
 </div>
+
+<script>
+$(function() {
+  var autoplaySpeed = parseInt({{section.settings.slide-speed}}, 10)
+
+  if (isNaN(autoplaySpeed)) {
+    autoplaySpeed = 10000
+  }
+
+  $('.testimonial-slides').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: '.testimonial-prev',
+    nextArrow: '.testimonial-next',
+    autoplay: true,
+    autoplaySpeed: autoplaySpeed,
+    dots: false,
+    arrows: true
+  })
+})
+</script>
 
 {% schema %}
   {
@@ -65,9 +94,10 @@
         "default": "Testimonials"
       },
       {
-        "type": "checkbox",
-        "id": "transparency",
-        "label": "Enable transparency"
+        "type": "text",
+        "id": "slide-speed",
+        "label": "Slide speed",
+        "default": "10000"
       }
     ],
     "blocks": [
